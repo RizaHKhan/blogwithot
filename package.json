@@ -1,0 +1,31 @@
+{
+  "name": "blogwithot",
+  "version": "1.0.0",
+  "description": "simple blog application",
+  "main": "app.js",
+  "scripts": {
+    "watch": "nodemon db.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RizaHKhan/blogwithot.git"
+  },
+  "keywords": [
+    "blogging",
+    "CRM"
+  ],
+  "author": "riza and ot",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RizaHKhan/blogwithot/issues"
+  },
+  "homepage": "https://github.com/RizaHKhan/blogwithot#readme",
+  "dependencies": {
+    "dotenv": "^8.1.0",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "mongodb": "^3.3.2",
+    "nodemon": "^1.19.2"
+  }
+}
