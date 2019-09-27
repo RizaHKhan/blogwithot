@@ -81,7 +81,12 @@ User.prototype.register = function() {
 
   User.prototype.login = function() {
       return new Promise((resolve, reject) => {
+        
+        //run this prior to reading
+        this.cleanUp()
 
+        
+        
       })
   }
 
