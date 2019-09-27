@@ -1,4 +1,4 @@
-const userCollection = require('../db').collection('users')
+const userCollection = require('../db').db().collection('users')
 const validator = require('validator')
 const bcrypt = require('bcryptjs')
 
@@ -85,8 +85,19 @@ User.prototype.register = function() {
         //run this prior to reading
         this.cleanUp()
 
-        
-        
+        userCollection.findOne({username: this.data.username})
+            .then((attemptedUser) => {
+                if(attemptedUser && bcrypt.compareSync(this.data.password, attemptedUser.password)) {
+                    this.data = attemptedUser
+                    resolve('You are logged in')
+                } else {
+                    reject('Invalid Username/Password')
+                }
+            })
+            .catch(function() {
+                //error at the database, not in the code
+                reject('Please try again later')
+            })
       })
   }
 
