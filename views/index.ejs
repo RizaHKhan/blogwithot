@@ -1,9 +1,9 @@
 <%- include('includes/header.ejs') %>
 
-<form action="/registration" action="POST">
-    <label for="username">Username: </label><input type="text" name="username">
-    <label for="email">Email: </label><input type="text" name="email">
-    <label for="password">Pasword: </label><input type="text" name="password">
+<form action="/register" method="POST">
+    <label for="username">Username: <input type="text" name="username"></label>
+    <label for="email">Email: <input type="text" name="email"></label>
+    <label for="password">Pasword: <input type="password" name="password"></label>
     <button type="submit">Register</button>
 </form>
 

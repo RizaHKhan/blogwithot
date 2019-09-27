@@ -22,10 +22,12 @@
   },
   "homepage": "https://github.com/RizaHKhan/blogwithot#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "dotenv": "^8.1.0",
     "ejs": "^2.7.1",
     "express": "^4.17.1",
     "mongodb": "^3.3.2",
-    "nodemon": "^1.19.2"
+    "nodemon": "^1.19.2",
+    "validator": "^11.1.0"
   }
 }
