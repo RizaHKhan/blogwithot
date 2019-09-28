@@ -6,30 +6,6 @@
 }
 
 body {
-  /* font-family: "Roboto", sans-serif; */
-  font-family: 'Noto Sans JP', sans-serif;
-  margin: 10px;
-}
-
-.center{
-  margin: auto;
-  padding: 10px;
-  width: 60%;
-  
+  font-family: "Roboto", sans-serif;
 }
 /*# sourceMappingURL=style.css.map */
-
-@media (max-width: 600px) {
-  body {
-    background-color: black;
-    color: white;
-  }
-
-  /* input[type=text]{
-    color: white;
-  }
-  input[type=password]{
-    color: white;
-  } */
-
-}

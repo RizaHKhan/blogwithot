@@ -17,6 +17,8 @@ exports.createPost = (req, res) => {
     })
 }
 
+
+
 exports.createScreen = (req, res) => {
     res.render('create-post', {success: req.flash('success')})
 }

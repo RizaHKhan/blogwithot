@@ -13,5 +13,16 @@
         <button type="submit" class="btn btn-primary">Register</button>
         <a class="btn btn-danger" href="/" role="button">Back</a>
     </form>
+
+<!-- flash errors -->
+<% errors.forEach(function(message) { 
+    %>
+
+<p><%= message %></p>
+
+<% }) %>
+
+<%- include('includes/footer.ejs') %>
+
 </div>
 <%- include('includes/footer.ejs') %>

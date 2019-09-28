@@ -5,9 +5,7 @@ const postController = require('./controller/postController')
 
 //user related routes
 router.get('/', userController.home)
-router.get('/registration', (req, res) => {
-    res.render('registration');   
-})
+router.get('/registration', userController.registeration)
 router.post('/register', userController.register)
 router.post('/login', userController.login)
 router.post('/logout', userController.logout)

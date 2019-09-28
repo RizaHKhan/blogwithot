@@ -102,8 +102,8 @@ User.prototype.register = function() {
                 if(attemptedUser && 
                     bcrypt.compareSync(this.data.password, attemptedUser.password)) 
                     {
-                    this.data = attemptedUser
-                    resolve('You are logged in')
+                    // this.data = attemptedUser
+                    resolve(attemptedUser)
                 } else {
                     reject('Invalid Username / Password')
                 }
