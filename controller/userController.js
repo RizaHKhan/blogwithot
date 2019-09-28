@@ -4,17 +4,18 @@ exports.register = (req, res) => {
     let user = new User(req.body)
     user.register()
         .then(() => {
+
             req.session.user = {username: user.data.username, _id: user.data._id}
             req.session.save(function() {
                 res.redirect('/')
             })
         })
-        .catch(err => 
-            res.send(err)
-            //req.flash('error', err)
-            //res.redirect('/')
-            //res.flash('errors', err)
-            )
+        .catch(err => {
+            req.flash('errors', err)
+            req.session.save(function() {
+                res.redirect('/registration');
+            })
+        })
 }
 
 exports.login = (req, res) => {
