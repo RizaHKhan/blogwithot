@@ -1,0 +1,11 @@
+<form action="/create-post" method="POST">
+    <input type="text" name="title">
+    <textarea name="body" cols="30" rows="10"></textarea>
+    <button type="submit">Save New Post</button>
+</form>
+
+<% success.forEach(function(message) { %>
+
+    <p><%= message %></p>
+    
+<% }) %>

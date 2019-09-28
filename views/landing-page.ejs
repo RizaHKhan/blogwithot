@@ -18,4 +18,12 @@
     </form>
 </div>
 
+<!-- flash errors -->
+<% errors.forEach(function(message) { 
+    %>
+
+<p><%= message %></p>
+
+<% }) %>
+
 <%- include('includes/footer.ejs') %>
