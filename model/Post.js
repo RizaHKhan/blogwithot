@@ -14,6 +14,7 @@ Post.prototype.cleanUp = function() {
     this.data = {
         title: this.data.title.trim().toLowerCase(),
         body: this.data.body.trim().toLowerCase(),
+        createdDate: new Date()
     }
 }
 

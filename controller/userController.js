@@ -32,6 +32,18 @@ exports.logout = (req, res) => {
     })
 }
 
+//check if user is logged in
+exports.loggedInUser = (req, res, next) => {
+    if(req.session.user) {
+        next()
+    } else {
+        req.flash('errors', 'You must be logged to perform that action')
+        req.session.save(function() {
+            res.redirect('/')
+        })
+    }
+}
+
 exports.home = (req, res) => {
     //session.user will only exist if a successful login was performed.
     if (req.session.user) {
