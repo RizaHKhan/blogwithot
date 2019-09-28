@@ -1,6 +1,12 @@
 <%- include('includes/header.ejs') %>
 
 <div class="center">
+    <!-- flash errors -->
+    <% errors.forEach(function(message) { 
+    %>
+    <p class="alert alert-info" role="alert"><%= message %></p>
+    <% }) %>
+
     <form action="/login" method="POST">
         <div class="form-group">
 
@@ -17,13 +23,5 @@
         
     </form>
 </div>
-
-<!-- flash errors -->
-<% errors.forEach(function(message) { 
-    %>
-
-<p><%= message %></p>
-
-<% }) %>
 
 <%- include('includes/footer.ejs') %>

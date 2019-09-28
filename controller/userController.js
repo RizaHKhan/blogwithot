@@ -63,13 +63,11 @@ exports.loggedInUser = (req, res, next) => {
     }
 }
 
-
-exports.registeration = (req, res) => {
-    if (req.session.user) {
+exports.registration = (req, res) => {
+    if(req.session.user) {
         res.render('logged-in-landing')
     } else {
-        //as soon as you access the data, it also deletes itself
-        res.render('registration', { errors: req.flash('errors') })
+        res.render('registration', {errors: req.flash('errors')})
     }
 }
 

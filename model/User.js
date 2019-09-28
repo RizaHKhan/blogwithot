@@ -31,7 +31,7 @@ User.prototype.validation = function() {
     //length of username
     if(this.data.username.length < 3 ||
          this.data.username.length > 20){
-             this.errors.push('Username much be at least 3 characters and less then 20 characters.')}
+             this.errors.push('The username must be between 3 to 20 characters.')}
 
     //username is only alphanumeric
     if(!validator.isAlphanumeric(this.data.username)) {
@@ -40,11 +40,11 @@ User.prototype.validation = function() {
     //length of password
     if(this.data.email.length < 5 || 
         this.data.email.length > 50) {
-            this.errors.push('Password much be at least 5 characters and less then 50 characters.')}
+            this.errors.push('The password must be between 5 to 50 characters.')}
 
     //email validation
     if(!validator.isEmail(this.data.email)) {
-        this.errors.push('Your much enter a valid email')}
+        this.errors.push('Your must enter a valid email')}
 
     //Only if user is valid then check to see if it is already in the database
     if(this.data.username.length > 2 && 
@@ -53,14 +53,14 @@ User.prototype.validation = function() {
         let usernameExists = await userCollection.findOne({
             username: this.data.username})
         if (usernameExists) {
-            this.errors.push('Username already exists in database')}
+            this.errors.push('The Username is taken')}
     }
 
     if(validator.isEmail(this.data.email)) {
         let emailExists = await userCollection.findOne({
             email: this.data.email})
         if(emailExists) {
-            this.errors.push('That email already exists')}
+            this.errors.push('The email already exists')}
     }
 
     resolve()
@@ -68,7 +68,7 @@ User.prototype.validation = function() {
   })
 }
 
-User.prototype.register = function() {
+ User.prototype.register = function() {
   return new Promise(async (resolve, reject) => {
     
     //validate user input
@@ -86,6 +86,7 @@ User.prototype.register = function() {
         await userCollection.insertOne(this.data)
         resolve('Information inserted into database')
     } else {
+        //work here
         reject(this.errors)
     }
     })
