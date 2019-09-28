@@ -1,0 +1,17 @@
+<%- include('includes/header.ejs') %>
+<div class="center">
+    <form action="/register" method="POST">
+        <input type="text" class="form-control" aria-label="Username" aria-describedby="inputUsername" placeholder="Enter username"
+            id="inputUsername" name="username" autocomplete="username">
+        <br />
+            <input type="text" class="form-control" aria-label="Email" aria-describedby="inputEmail" id="inputEmail"
+                placeholder="Enter email" name="email" autocomplete="email"></label>
+        <br />
+        <input type="password" class="form-control" aria-label="Password" aria-describedby="inputPassword" placeholder="Enter Password"
+            id="inputPassword" name="password" autocomplete="new-password">
+        <br />
+        <button type="submit" class="btn btn-primary">Register</button>
+        <a class="btn btn-danger" href="/" role="button">Back</a>
+    </form>
+</div>
+<%- include('includes/footer.ejs') %>

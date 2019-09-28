@@ -1,4 +1,11 @@
-<form action="/logout" method="POST">
-    <input type="hidden" name="" value="">
-    <button type="submit">Log Out</button>
-</form>
+<%- include('includes/header.ejs') %>
+<div>
+    <form action="/logout" method="POST">
+        <div class="form-group">
+            <input type="hidden" name="" value="">
+            <button type="submit" class="btn btn-danger">Log Out</button>
+        </div>
+    </form>
+</div>
+
+<%- include('includes/footer.ejs') %>

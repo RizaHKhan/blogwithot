@@ -23,11 +23,13 @@
   "homepage": "https://github.com/RizaHKhan/blogwithot#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "bootstrap": "^4.3.1",
     "connect-mongo": "^3.0.0",
     "dotenv": "^8.1.0",
     "ejs": "^2.7.1",
     "express": "^4.17.1",
     "express-session": "^1.16.2",
+    "materialize-css": "^1.0.0-rc.2",
     "mongodb": "^3.3.2",
     "nodemon": "^1.19.2",
     "validator": "^11.1.0"

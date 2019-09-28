@@ -29,26 +29,38 @@ User.prototype.validation = function() {
     if(this.data.password == '') {this.errors.push('Password cannot be empty')}
 
     //length of username
-    if(this.data.username.length < 3 || this.data.username.length > 20) {this.errors.push('Username much be at least 3 characters and less then 20 characters.')}
+    if(this.data.username.length < 3 ||
+         this.data.username.length > 20){
+             this.errors.push('Username much be at least 3 characters and less then 20 characters.')}
 
     //username is only alphanumeric
-    if(!validator.isAlphanumeric(this.data.username)) {this.errors.push('The username can only contain letters and numbers')}
+    if(!validator.isAlphanumeric(this.data.username)) {
+        this.errors.push('The username can only contain letters and numbers')}
 
     //length of password
-    if(this.data.email.length < 5 || this.data.email.length > 50) {this.errors.push('Password much be at least 5 characters and less then 50 characters.')}
+    if(this.data.email.length < 5 || 
+        this.data.email.length > 50) {
+            this.errors.push('Password much be at least 5 characters and less then 50 characters.')}
 
     //email validation
-    if(!validator.isEmail(this.data.email)) {this.errors.push('Your much enter a valid email')}
+    if(!validator.isEmail(this.data.email)) {
+        this.errors.push('Your much enter a valid email')}
 
     //Only if user is valid then check to see if it is already in the database
-    if(this.data.username.length > 2 && this.data.username.length < 21 && validator.isAlphanumeric(this.data.username)) {
-        let usernameExists = await userCollection.findOne({username: this.data.username})
-        if (usernameExists) {this.errors.push('Username already exists in database')}
+    if(this.data.username.length > 2 && 
+        this.data.username.length < 21 && 
+        validator.isAlphanumeric(this.data.username)) {
+        let usernameExists = await userCollection.findOne({
+            username: this.data.username})
+        if (usernameExists) {
+            this.errors.push('Username already exists in database')}
     }
 
     if(validator.isEmail(this.data.email)) {
-        let emailExists = await userCollection.findOne({email: this.data.email})
-        if(emailExists) {this.errors.push('That email already exists')}
+        let emailExists = await userCollection.findOne({
+            email: this.data.email})
+        if(emailExists) {
+            this.errors.push('That email already exists')}
     }
 
     resolve()
@@ -87,11 +99,13 @@ User.prototype.register = function() {
 
         userCollection.findOne({username: this.data.username})
             .then((attemptedUser) => {
-                if(attemptedUser && bcrypt.compareSync(this.data.password, attemptedUser.password)) {
+                if(attemptedUser && 
+                    bcrypt.compareSync(this.data.password, attemptedUser.password)) 
+                    {
                     this.data = attemptedUser
                     resolve('You are logged in')
                 } else {
-                    reject('Invalid Username/Password')
+                    reject('Invalid Username / Password')
                 }
             })
             .catch(function() {
