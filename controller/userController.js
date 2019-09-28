@@ -6,7 +6,12 @@ exports.register = (req, res) => {
         .then((result) => {
             res.send(result)
         })
-        .catch(err => res.send(err))
+        .catch(err => 
+            res.send(err)
+            //req.flash('error', err)
+            //res.redirect('/')
+            //res.flash('errors', err)
+            )
 }
 
 exports.login = (req, res) => {
