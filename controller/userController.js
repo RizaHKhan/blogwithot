@@ -7,7 +7,6 @@ exports.register = (req, res) => {
         res.send(result)
     })
     .catch(err => res.send(err))
-
 }
 
 exports.login = (req, res) => {
@@ -18,7 +17,13 @@ exports.login = (req, res) => {
         req.session.user = {username: user.data.username}
         res.render('logged-in-landing')
     })
-    .catch(err => res.send(err))
+    .catch(err => {
+        //req.session.flash.error = [e]
+        req.flash('errors', err)
+        req.session.save(function() {
+            res.redirect('/')
+        })
+    })
 }
 
 exports.logout = (req, res) => {
@@ -32,7 +37,7 @@ exports.home = (req, res) => {
     if (req.session.user) {
         res.render('logged-in-landing')
     } else {
-        res.render('landing-page')
+                        //as soon as you access the data, it also deletes itself
+        res.render('landing-page', {errors: req.flash('errors')})
     }
-    
 }
