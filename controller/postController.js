@@ -2,6 +2,8 @@
 const Post = require('../model/Post')
 
 exports.createPost = (req, res) => {
+
+    //pass in information from sessions
     let post = new Post(req.body)
     post.createPost()
     .then((result) => {

@@ -3,8 +3,11 @@ const User = require('../model/User')
 exports.register = (req, res) => {
     let user = new User(req.body)
     user.register()
-        .then((result) => {
-            res.send(result)
+        .then(() => {
+            req.session.user = {username: user.data.username, _id: user.data._id}
+            req.session.save(function() {
+                res.redirect('/')
+            })
         })
         .catch(err => res.send(err))
 }
@@ -20,7 +23,7 @@ exports.login = (req, res) => {
              The obect that equals can be anything, 
              however, the user object attached to sessions 
              contains the data entered in the from. Which includes the username. */
-            req.session.user = { username: user.data.username }
+            req.session.user = { username: user.data.username, _id: user.data._id }
             res.render('logged-in-landing')
         })
         .catch(err => {
