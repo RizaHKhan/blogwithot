@@ -1,11 +1,22 @@
 <%- include('includes/header.ejs') %>
 
-<form action="/register" method="POST">
-    <label for="username">Username: <input type="text" name="username"></label>
-    <label for="email">Email: <input type="text" name="email"></label>
-    <label for="password">Pasword: <input type="password" name="password"></label>
-    <button type="submit">Register</button>
-</form>
+<div class="center">
+    <form action="/login" method="POST">
+        <div class="form-group">
+
+            <input type="text" class="form-control" aria-label="Username" aria-describedby="inputUsername"
+                placeholder="Enter Username" id="inputUsername" name="username" autocomplete="username">
+            <br />
+
+            <input type="password" class="form-control" aria-label="Password" aria-describedby="inputPassword"
+                placeholder="Enter Password" id="inputPassword" name="password" autocomplete="current-password">
+            <br />
+            <button type="submit" class="btn btn-success ">Login</button>
+            <a class="btn btn-primary " href="/registration" role="button">Register</a>
+        </div>
+
+    </form>
+</div>
 
 <!-- flash errors -->
 <% errors.forEach(function(message) { 
