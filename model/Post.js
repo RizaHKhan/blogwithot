@@ -1,9 +1,11 @@
 const postCollection = require('../db').db().collection('posts')
+const ObjectID = require('mongodb').ObjectID
 const validator = require('validator')
 
-let Post = function(data) {
+let Post = function(data, userid) {
     this.data = data
     this.errors = []
+    this.userid = userid
 }
 
 Post.prototype.cleanUp = function() {
@@ -14,11 +16,13 @@ Post.prototype.cleanUp = function() {
     this.data = {
         title: this.data.title.trim().toLowerCase(),
         body: this.data.body.trim().toLowerCase(),
-        createdDate: new Date()
+        createdDate: new Date(),
+        author: ObjectID(this.userid)
     }
 }
 
 Post.prototype.validate = function() {
+<<<<<<< HEAD
     if(this.data.title == '' &&
     !validator.isAlphanumeric(this.data.title)) {
         this.errors.push('Title cannot be empty and must contain letters and numbers')}
@@ -26,8 +30,11 @@ Post.prototype.validate = function() {
     !validator.isAlphanumeric(this.data.body)) {
         this.errors.push('You must enter some content for your post and can only contain letters and numbers')}
    
+=======
+    if(this.data.title == '' && !validator.isAlphanumeric(this.data.title)) {this.errors.push('Title cannot be empty and must contain letters and numbers')}
+    if(this.data.body == '' && !validator.isAlphanumeric(this.data.body)) {this.errors.push('You must enter some content for your post and can only contain letters and numbers')}   
+>>>>>>> 3a453e0adac0b19fbe367b83d236dbd4be04ba45
 }
-
 
 Post.prototype.createPost = function() {
     return new Promise(async (resolve, reject) => {
