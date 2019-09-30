@@ -4,7 +4,6 @@ exports.register = (req, res) => {
     let user = new User(req.body)
     user.register()
         .then(() => {
-            
             req.session.user = {username: user.data.username, _id: user.data._id}
             req.session.save(function() {
                 res.redirect('/')
@@ -67,7 +66,7 @@ exports.registration = (req, res) => {
     if(req.session.user) {
         res.render('logged-in-landing')
     } else {
-        res.render('registration', {errors: req.flash('errors')})
+        res.render('registration', {username: this.result.username, errors: req.flash('errors')})
     }
 }
 

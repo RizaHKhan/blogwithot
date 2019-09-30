@@ -22,8 +22,13 @@ Post.prototype.cleanUp = function() {
 }
 
 Post.prototype.validate = function() {
-    if(this.data.title == '' && !validator.isAlphanumeric(this.data.title)) {this.errors.push('Title cannot be empty and must contain letters and numbers')}
-    if(this.data.body == '' && !validator.isAlphanumeric(this.data.body)) {this.errors.push('You must enter some content for your post and can only contain letters and numbers')}   
+    if(this.data.title == '' &&
+    !validator.isAlphanumeric(this.data.title)) {
+        this.errors.push('Title cannot be empty and must contain letters and numbers')}
+    if(this.data.body == '' && 
+    !validator.isAlphanumeric(this.data.body)) {
+        this.errors.push('You must enter some content for your post and can only contain letters and numbers')}
+   
 }
 
 Post.prototype.createPost = function() {
