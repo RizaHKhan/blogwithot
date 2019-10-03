@@ -1,4 +1,5 @@
 const User = require('../model/User')
+const Post = require('../model/Post')
 
 exports.register = (req, res) => {
     let user = new User(req.body)
@@ -32,7 +33,7 @@ exports.login = (req, res) => {
              //attach the results from the model to the session object under the variable user. 
             req.session.user = { username: result.username, _id: result._id }
             req.session.save(function() {
-                res.render('logged-in-landing')
+                res.redirect('/')
             })
         })
         .catch(err => {
@@ -70,10 +71,13 @@ exports.registration = (req, res) => {
     }
 }
 
-exports.home = (req, res) => {
+exports.home = async (req, res) => {
     //session.user will only exist if a successful login was performed.
+    
     if (req.session.user) {
-        res.render('logged-in-landing')
+                
+        res.render('logged-in-landing', {username: req.session.user.username})
+        
     } else {
         //as soon as you access the data, it also deletes itself
         res.render('landing-page', { errors: req.flash('errors') })

@@ -17,7 +17,15 @@ exports.createPost = (req, res) => {
     })
 }
 
-
+exports.getSinglePost = async (req, res) => {
+    
+    try {
+        let post = await Post.getSinglePost(req.params.id)
+        res.render('single-post-screen', {post: post})
+    } catch {
+        res.send('404 template goes here')
+    }
+}
 
 exports.createScreen = (req, res) => {
     res.render('create-post', {success: req.flash('success')})

@@ -31,6 +31,22 @@ Post.prototype.validate = function() {
    
 }
 
+Post.getSinglePost = function(id) {
+    return new Promise( async (resolve, reject) => {
+        if(typeof(id) != 'string' || !ObjectID.isValid(id)) {
+            reject()
+            return
+        } else {
+            let post = await postCollection.findOne({_id: new ObjectID(id)})
+            post ? resolve(post) : reject()
+        }
+    })
+}
+
+Post.prototype.getFeed = async function(id) {
+    
+}
+
 Post.prototype.createPost = function() {
     return new Promise(async (resolve, reject) => {
 

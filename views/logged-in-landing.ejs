@@ -9,4 +9,27 @@
     <a class="btn btn-info float-left" href="/create-post" role="button">Create Post</a>
 </div>
 
+<div>
+    <p>Hi <strong><%= username %></strong>, nice to see you back</p>
+    <p>Below are all of your posts:</p>
+</div>
+
+<div>
+    <table>
+        <tbody>
+            <tr>
+                <th>Blog Title</th>
+                <th>Blog Content</th>
+                
+            </tr>
+
+            <tr>
+                <td>Some Title</td>
+                <td>Some Content</td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+
 <%- include('includes/footer.ejs') %>
